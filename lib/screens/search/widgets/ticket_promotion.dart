@@ -31,7 +31,7 @@ class TicketPromotion extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                     image: const DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage(AppMedia.hotelRoom))),
+                        image: AssetImage(AppMedia.planeSit))),
               ),
               const SizedBox(
                 height: 12,
@@ -104,6 +104,15 @@ class TicketPromotion extends StatelessWidget {
                     "Take Love",
                     style:
                         AppStyles.headLineStyle2.copyWith(color: Colors.white),
+                  ),
+                  const SizedBox(
+                      height:
+                          10), // Add some spacing between the text and emojis
+                  const Text(
+                    "😁 ✌️\n😎", // Add your desired emojis here
+                    style: TextStyle(
+                      fontSize: 24,
+                    ), // Adjust the font size as needed
                   ),
                 ],
               ),

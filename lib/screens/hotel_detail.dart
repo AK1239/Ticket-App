@@ -78,11 +78,9 @@ class _HotelDetailState extends State<HotelDetail> {
           ),
           SliverList(
               delegate: SliverChildListDelegate([
-            const Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Text(
-                  "A sliver is a portion of a scrollable area. It can represent various types of scrolling elements, like lists, grids, headers, and more. Slivers allow you to create customized scrolling behaviors and layouts by composing different scrollable sections. A sliver is a portion of a scrollable area. It can represent various types of scrolling elements, like lists, grids, headers, and more. Slivers allow you to create customized scrolling behaviors and layouts by composing different scrollable sections. A sliver is a portion of a scrollable area. It can represent various types of scrolling elements, like lists, grids, headers, and more. Slivers allow you to create customized scrolling behaviors and layouts by composing different scrollable sections."),
-            ),
+            Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: ExpandedTextWidget(text: hotelList[index]["detail"])),
             const Padding(
               padding: EdgeInsets.all(16.0),
               child: Text(
@@ -94,17 +92,58 @@ class _HotelDetailState extends State<HotelDetail> {
               height: 200.0,
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
+                  itemCount: hotelList[index]["images"].length,
+                  itemBuilder: (context, imagesIndex) {
                     return Container(
                         margin: const EdgeInsets.all(16),
-                        child: Image.network(
-                            "https://via.placeholder.com/200x200"));
+                        child: Image.asset(
+                            "assets/images/${hotelList[index]["images"][imagesIndex]}"));
                   }),
             )
           ]))
         ],
       ),
+    );
+  }
+}
+
+class ExpandedTextWidget extends StatefulWidget {
+  const ExpandedTextWidget({super.key, required this.text});
+  final String text;
+
+  @override
+  State<ExpandedTextWidget> createState() => _ExpandedTextWidgetState();
+}
+
+class _ExpandedTextWidgetState extends State<ExpandedTextWidget> {
+  bool isExpanded = false;
+  _toggleExpansion() {
+    setState(() {
+      isExpanded = !isExpanded;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    var textWidget = Text(
+      widget.text,
+      maxLines: isExpanded ? null : 9,
+      overflow: isExpanded ? TextOverflow.visible : TextOverflow.ellipsis,
+    );
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        textWidget,
+        GestureDetector(
+          onTap: () {
+            _toggleExpansion();
+          },
+          child: Text(
+            isExpanded ? "Less" : "More",
+            style: AppStyles.textStyle.copyWith(color: AppStyles.primaryColor),
+          ),
+        )
+      ],
     );
   }
 }

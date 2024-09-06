@@ -2,6 +2,7 @@ import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:ticket_app/base/res/media.dart';
 import 'package:ticket_app/base/res/styles/app_styles.dart';
+import 'package:ticket_app/base/widgets/app_column_text_layout.dart';
 import 'package:ticket_app/base/widgets/heading_text.dart';
 import 'package:ticket_app/base/widgets/text_style_third.dart';
 
@@ -144,14 +145,149 @@ class ProfileScreen extends StatelessWidget {
                   top: -40,
                   right: -45,
                   child: Container(
-                    padding: EdgeInsets.all(30),
+                    padding: const EdgeInsets.all(30),
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        border:
-                            Border.all(width: 18, color: Color(0xFF264CD2))),
+                        border: Border.all(
+                            width: 18, color: const Color(0xFF264CD2))),
                   ))
             ],
-          )
+          ),
+          const SizedBox(
+            height: 25,
+          ),
+          Text(
+            "Accumulated Miles",
+            style: AppStyles.headLineStyle2,
+          ),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(18),
+                color: AppStyles.bgColor),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 15,
+                ),
+                Text(
+                  "192802",
+                  style: TextStyle(
+                      fontSize: 45,
+                      color: AppStyles.textColor,
+                      fontWeight: FontWeight.w600),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Miles Accured",
+                      style: AppStyles.headLineStyle4.copyWith(fontSize: 16),
+                    ),
+                    Text(
+                      "16th July",
+                      style: AppStyles.headLineStyle4.copyWith(fontSize: 16),
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 4,
+                ),
+                Divider(
+                  color: Colors.grey.shade300,
+                ),
+                const SizedBox(
+                  height: 4,
+                ),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    AppColumnTextLayout(
+                      topText: "23 402",
+                      bottomText: "Miles",
+                      align: CrossAxisAlignment.start,
+                      isColor: false,
+                    ),
+                    AppColumnTextLayout(
+                      topText: "Airline CO",
+                      bottomText: "Recieved From",
+                      align: CrossAxisAlignment.end,
+                      isColor: false,
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 4,
+                ),
+                Divider(
+                  color: Colors.grey.shade300,
+                ),
+                const SizedBox(
+                  height: 4,
+                ),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    AppColumnTextLayout(
+                      topText: "52 340",
+                      bottomText: "Miles",
+                      align: CrossAxisAlignment.start,
+                      isColor: false,
+                    ),
+                    AppColumnTextLayout(
+                      topText: "Dbestech",
+                      bottomText: "Recieved From",
+                      align: CrossAxisAlignment.end,
+                      isColor: false,
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 4,
+                ),
+                Divider(
+                  color: Colors.grey.shade300,
+                ),
+                const SizedBox(
+                  height: 4,
+                ),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    AppColumnTextLayout(
+                      topText: "24",
+                      bottomText: "Miles",
+                      align: CrossAxisAlignment.start,
+                      isColor: false,
+                    ),
+                    AppColumnTextLayout(
+                      topText: "McDonald's",
+                      bottomText: "Recieved From",
+                      align: CrossAxisAlignment.end,
+                      isColor: false,
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 25,
+                ),
+                InkWell(
+                  onTap: () {
+                    print("tapped");
+                  },
+                  child: Text(
+                    "How to get more miles",
+                    style: AppStyles.textStyle.copyWith(
+                        color: AppStyles.primaryColor,
+                        fontWeight: FontWeight.w500),
+                  ),
+                )
+              ],
+            ),
+          ),
         ],
       ),
     );
